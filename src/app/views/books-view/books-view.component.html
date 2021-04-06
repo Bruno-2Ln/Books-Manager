@@ -1,0 +1,24 @@
+<div class="container text-center">
+    <app-header></app-header>
+
+    <button class="btn btn-dark mb-4 mr-4" (click)="allChangeStatus('Libre')">Tous libres</button>
+    
+    <button class="btn btn-dark mb-4" (click)="allChangeStatus('Pris')">Tous pris</button>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Auteur</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let book of books">
+            <tr app-table-row id={{book.id}} title={{book.title}} author={{book.author}} status={{book.status}}>
+            </tr>
+        </tbody>
+    </table>
+</div>
+  

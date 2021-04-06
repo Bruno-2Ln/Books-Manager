@@ -1,0 +1,16 @@
+<td>{{id}}</td>
+<td>{{title}}</td>
+<td>{{author}}</td>
+<td>{{status}}</td>
+<!-- <td *ngIf="status">
+    <button *ngIf="status === 'Pris'" type="button" class="btn btn-dark" (click)="onClickSwitch('Libre')">Basculer en Libre</button>
+    <button *ngIf="status === 'Libre'" type="button" class="btn btn-dark" (click)="onClickSwitch('Pris')">Basculer en Pris</button>
+</td> -->
+<td>
+    <button type="button" class="btn btn-dark m-2" (click)="onClickSwitch(nextStatus)">
+        Basculer en {{nextStatus}}
+    </button>
+    <a type="button" class="text-white text-decoration-none btn btn-success m-2 text-uppercace" [routerLink]="detailsUrl">
+        Détails
+    </a>
+</td>

@@ -3,14 +3,28 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TableRowComponent } from './components/table-row/table-row.component';
+import { BooksViewComponent } from './views/books-view/books-view.component';
+import { ErrorViewComponent } from './views/error-view/error-view.component';
+import { BookViewComponent } from './views/book-view/book-view.component';
+import { HeaderComponent } from './components/header/header.component';
+import { AuthViewComponent } from './views/auth-view/auth-view.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TableRowComponent,
+    BooksViewComponent,
+    ErrorViewComponent,
+    BookViewComponent,
+    HeaderComponent,
+    AuthViewComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
