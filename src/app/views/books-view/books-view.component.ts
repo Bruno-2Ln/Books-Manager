@@ -16,6 +16,7 @@ export class BooksViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.books = this.bookService.books;
+    
   }
 
   allChangeStatus(status){

@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Book } from 'src/app/models/book-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
 
-  books: Array<any> = [];
+  books: Array<Book> = [];
 
   constructor() { 
     this.books = [];
 
     for (let i = 1; i <= 10; i++) {
-      this.books.push({
-        id: i,
-        title: "titre " + i,
-        author: "auteur " + i,
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur adipisci, ipsum aspernatur nostrum quas odit?",
-        status: 'Libre'
-      });
-    }
+      this.books.push(
+        new Book( "Titre " + i, "Auteur " + i, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur adipisci, ipsum aspernatur nostrum quas odit?", 'Libre')
+      )}
   }
 
   getBook(id: number){
@@ -42,6 +38,20 @@ export class BookService {
         break;
       }
     }
-
   }
+
+  addBook(newBook : Book) {
+    this.books.push(newBook);
+  }
+
+  updateBook(editedBook : Book) {
+    for (let i = 0; i < this.books.length; i++) {
+      if (this.books[i].id === editedBook.id) {
+        this.books[i] = editedBook ;
+        break;
+      }
+    }
+  }
+
+
 }

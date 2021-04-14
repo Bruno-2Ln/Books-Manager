@@ -15,11 +15,13 @@ export class TableRowComponent implements OnInit, OnChanges {
 
   nextStatus: string;
   detailsUrl: string;
+  editUrl: string;
 
   constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
     this.detailsUrl = '/book/' + this.id;
+    this.editUrl = '/book/edit/' + this.id;
   }
 
   ngOnChanges(): void {

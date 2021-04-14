@@ -1,0 +1,103 @@
+<div class="container text-center">
+<app-header></app-header>
+
+    <form (ngSubmit)="onSubmitNewBook(newBook)" #newBook="ngForm">
+
+        
+        <div class="form-group">
+            <label for="title">
+                Titre du livre
+            </label>
+
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-danger text-left">
+                <div *ngIf="title.errors.required">
+                    <small>* Le titre est requis</small>
+                </div>
+            </div>
+
+            <input  
+                type="text"
+                id="title"
+                class="form-control"
+                name="title"
+                [(ngModel)]="book.title"
+                required
+                minlength="5"
+                maxlength="30"
+                #title="ngModel">      
+        </div>
+
+        <div class="form-group">
+            <label for="author">
+                Auteur du livre
+            </label>
+
+            <div *ngIf="author.invalid && (author.dirty || author.touched)" class="text-danger text-left">
+                <div *ngIf="author.errors.required">
+                    <small>* L'auteur est requis</small>
+                </div>
+            </div>
+
+            <input  
+                type="text"
+                id="author"
+                class="form-control"
+                name="author"
+                [(ngModel)]="book.author"
+                required
+                #author="ngModel">      
+        </div>
+
+        <div class="form-group">
+            <label for="description">
+                Description du livre
+            </label>
+
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger text-left">
+                <div *ngIf="description.errors.required">
+                    <small>* La description est requise</small>
+                </div>
+            </div>
+
+            <textarea
+                id="description"
+                class="form-control"
+                name="description"
+                [(ngModel)]="book.description"
+                maxLength="1000"
+                required
+                #description="ngModel"></textarea>     
+        </div>
+
+        <div class="form-group">
+            <label for="status">
+                Status du livre
+            </label>
+
+            <div *ngIf="status.invalid && (status.dirty || status.touched)" class="text-danger text-left">
+                <div *ngIf="status.errors.required">
+                    <small>* Le status est requis</small>
+                </div>
+            </div>
+
+            <select
+                id="status"
+                class="form-control"
+                name="status"
+                [(ngModel)]="book.status"
+                #status="ngModel">
+                
+                <option value="Pris">Pris</option>
+                <option value="Libre">Libre</option>
+            </select>
+        </div>
+
+        <button [disabled]="newBook.invalid" class="btn btn-primary float-right text-uppercase">
+            Ajouter !
+        </button>
+
+        <a routerLink="/books" class="btn btn-dark float-left text-uppercase">
+            retour
+        </a>
+    </form>
+</div>

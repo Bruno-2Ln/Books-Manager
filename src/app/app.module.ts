@@ -10,6 +10,9 @@ import { ErrorViewComponent } from './views/error-view/error-view.component';
 import { BookViewComponent } from './views/book-view/book-view.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AuthViewComponent } from './views/auth-view/auth-view.component';
+import { NewBookViewComponent } from './views/new-book-view/new-book-view.component';
+import { EditBookViewComponent } from './views/edit-book-view/edit-book-view.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,15 @@ import { AuthViewComponent } from './views/auth-view/auth-view.component';
     ErrorViewComponent,
     BookViewComponent,
     HeaderComponent,
-    AuthViewComponent
+    AuthViewComponent,
+    NewBookViewComponent,
+    EditBookViewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
