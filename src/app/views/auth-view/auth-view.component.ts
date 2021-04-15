@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -9,20 +10,34 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class AuthViewComponent implements OnInit {
 
+  authForm: FormGroup;
+
+  errorMsg: string;
+
   constructor(
     private authService: AuthService,
     private router: Router,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
+    this.authForm = this.formBuilder.group({
+      'email': ['', [Validators.email, Validators.required]],
+      'password': ['', [ Validators.required]],
+    })
   }
 
-  onClickSignIn(): void {
-    this.authService.signIn()
+  onSubmitSignIn(): void {
+    const email: string = this.authForm.value.email;
+    const password: string = this.authForm.value.password;
+
+
+    this.authService.signIn(email, password)
     .then(() => {
       this.router.navigate(['books']);
     })
-    .catch(() => {
+    .catch((err) => {
+      this.errorMsg = err;
 
     })
 

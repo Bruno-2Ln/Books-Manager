@@ -12,7 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthViewComponent } from './views/auth-view/auth-view.component';
 import { NewBookViewComponent } from './views/new-book-view/new-book-view.component';
 import { EditBookViewComponent } from './views/edit-book-view/edit-book-view.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

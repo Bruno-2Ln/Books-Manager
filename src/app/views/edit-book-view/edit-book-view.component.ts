@@ -22,6 +22,7 @@ export class EditBookViewComponent implements OnInit {
     const id = this.route.snapshot.params.id;
 
     this.book = this.bookService.getBook(+id);
+    console.log(this.book);
   }
 
   onSubmitEditBook(){
