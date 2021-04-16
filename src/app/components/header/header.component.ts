@@ -9,16 +9,21 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class HeaderComponent implements OnInit, OnChanges {
 
+  isAuth: boolean;
+
+  profilUrl: string;
+
   constructor(
     private router: Router,
     private authService: AuthService,
   ) { }
 
-  isAuth: boolean;
-
   ngOnInit(): void {
-this.isAuth = this.authService.isAuth;
+
+    this.isAuth = this.authService.isAuth;
     console.log(this.isAuth);
+
+    this.profilUrl = '/profil/' + this.authService.userIdAuth
   }
 
   ngOnChanges(): void {

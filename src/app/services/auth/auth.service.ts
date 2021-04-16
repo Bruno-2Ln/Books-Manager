@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,7 @@ import { UserService } from '../user.service';
 export class AuthService {
 
   isAuth: boolean = false;
+  userIdAuth: number;
 
   constructor(
     private userService: UserService,
@@ -17,13 +18,14 @@ export class AuthService {
       
       setTimeout(() => {
 
-        const user = this.userService.getUserByMail(email);
+        const user = this.userService.getUserBy('email', email);
         console.log(user);
         
 
         if(user) {
           if(user.password === password) {
             this.isAuth = true;
+            this.userIdAuth = user.id;
             resolve(this.isAuth);
           }
           reject("Le mot de passe est erroné")
@@ -39,5 +41,6 @@ export class AuthService {
 
   signOut() {
     this.isAuth = false;
+    this.userIdAuth = null;
   }
 }

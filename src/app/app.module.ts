@@ -13,6 +13,7 @@ import { AuthViewComponent } from './views/auth-view/auth-view.component';
 import { NewBookViewComponent } from './views/new-book-view/new-book-view.component';
 import { EditBookViewComponent } from './views/edit-book-view/edit-book-view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfilViewComponent } from './views/profil-view/profil-view.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     AuthViewComponent,
     NewBookViewComponent,
-    EditBookViewComponent
+    EditBookViewComponent,
+    ProfilViewComponent
   ],
   imports: [
     BrowserModule,
