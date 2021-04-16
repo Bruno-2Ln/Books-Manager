@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user-model';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -9,23 +11,29 @@ import { UserService } from 'src/app/services/user/user.service';
   templateUrl: './profil-view.component.html',
   styleUrls: ['./profil-view.component.scss']
 })
-export class ProfilViewComponent implements OnInit {
+export class ProfilViewComponent implements OnInit, OnDestroy {
 
   user: User;
 
   userForm: FormGroup;
 
+  userSubscription: Subscription;
+
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute,
+    private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params.id;
 
-    this.user = this.userService.getUserBy('id', +id);
+    this.userSubscription = this.authService.getUserAuth().subscribe(
+      (user: User) => {
+        this.user = user;
+      }
+    )
+
     console.log(this.user);
     
       this.userForm = this.formBuilder.group({
@@ -41,6 +49,9 @@ export class ProfilViewComponent implements OnInit {
     this.userService.updateUser(this.user);
     this.router.navigate(['books'])
     
+  }
+
+  ngOnDestroy(): void{ 
   }
 
 }

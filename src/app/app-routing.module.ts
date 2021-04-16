@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'book/new', canActivate:[AuthGuardService], component: NewBookViewComponent},
   {path: 'book/edit/:id', canActivate:[AuthGuardService], component: EditBookViewComponent},
   {path: 'book/:id', canActivate:[AuthGuardService], component: BookViewComponent},
-  {path: 'profil/:id', canActivate:[AuthGuardService], component: ProfilViewComponent},
+  {path: 'profil', canActivate:[AuthGuardService], component: ProfilViewComponent},
   {path: 'not-found', component: ErrorViewComponent},
   {path: '**', redirectTo: 'not-found'},
 ];

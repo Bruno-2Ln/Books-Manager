@@ -6,8 +6,8 @@
 
     <button (click)="onClickSignOut()" class="btn btn-dark float-right text-uppercase mt-2">DÉCONNEXION</button>
 
-    <a [routerLink]="profilUrl" class="btn btn-dark float-right text-uppercase m-2">
-        Mon Profil
+    <a routerLink="/profil" class="btn btn-dark float-right text-uppercase m-2">
+        Profil de {{user.firstname}}
     </a>
 
 </div>

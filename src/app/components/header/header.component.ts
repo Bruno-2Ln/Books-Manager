@@ -1,5 +1,7 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { User } from 'src/app/models/user-model';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -12,6 +14,9 @@ export class HeaderComponent implements OnInit, OnChanges {
   isAuth: boolean;
 
   profilUrl: string;
+  user: User;
+
+  userSubscription: Subscription;
 
   constructor(
     private router: Router,
@@ -19,11 +24,14 @@ export class HeaderComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit(): void {
+    this.userSubscription = this.authService.getUserAuth().subscribe(
+      (user: User) => {
+        this.user = user;
+      }
+    )
 
     this.isAuth = this.authService.isAuth;
     console.log(this.isAuth);
-
-    this.profilUrl = '/profil/' + this.authService.userIdAuth
   }
 
   ngOnChanges(): void {
